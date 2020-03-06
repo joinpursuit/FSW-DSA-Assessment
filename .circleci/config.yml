@@ -9,27 +9,20 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - checkout
-            - restore_cache:
-               key: npm-cache-v1-{{ checksum "package.json" }}
-            - run:
-                name: Install Dependencies
-              command: yarn install
-            - save_cache:
-              key: npm-cache-v1-{{ checksum "package.json" }}
-              paths:
-            - node_modules
-            - run:
-              name: Run Tests
-              command: |
-                mkdir -p ./test-results/junit
-                yarn test --ci --reporters=jest-junit
             - run: npm install
             - run: npm test
-            - store_artifacts:
-              path: ./test-results/junit
+            - run:
+              name: Install JUnit coverage reporter
+              command: yarn add --dev jest-junit
+            - run:
+              name: Run tests with JUnit as reporter
+              command: jest --ci --runInBand --reporters=default --reporters=jest-junit
+              environment:
+                JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
             - store_test_results:
-              path: ./test-results
+              path: reports/junit
+            - store_artifacts:
+              path: reports/junit
 workflows:
     build-and-test:
       jobs:

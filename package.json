@@ -11,8 +11,5 @@
     "test": "jest"
   },
   "author": "Lynk",
-  "license": "MIT",
-  "jest-junit":{
-    "output": "./test-results/junit/results.xml"
-  }
+  "license": "MIT"
 }
