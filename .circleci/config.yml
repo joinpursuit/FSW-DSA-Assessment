@@ -7,22 +7,27 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-            - run:
-              name: Install JUnit coverage reporter
-              command: yarn add --dev jest-junit
-            - run:
-              name: Run tests with JUnit as reporter
-              command: jest --ci --runInBand --reporters=default --reporters=jest-junit
-              environment:
-                JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
-            - store_test_results:
-              path: reports/junit
-            - store_artifacts:
-              path: reports/junit
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: "JavaScript Linter"
+          command: yarn lint -- --format junit -o reports/junit/js-lint-results.xml
+      - run:
+          name: "JavaScript Test Suite"
+          environment:
+            JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+          command: yarn test -- --ci --testResultsProcessor="jest-junit"
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
 workflows:
     build-and-test:
       jobs:
