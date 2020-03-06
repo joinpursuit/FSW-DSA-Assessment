@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-       - run:
+            - run:
               name: Run Tests
               command: |
                 mkdir -p ~/test-results/junit
