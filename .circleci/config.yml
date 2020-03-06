@@ -21,9 +21,9 @@ jobs:
             - node_modules
             - run:
               name: Run Tests
-               command: |
-               mkdir -p ./test-results/junit
-              yarn test --ci --reporters=jest-junit
+               command: 
+                mkdir -p ./test-results/junit
+                yarn test --ci --reporters=jest-junit
             - store_artifacts:
               path: ./test-results/junit
           - store_test_results:
