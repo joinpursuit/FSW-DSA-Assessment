@@ -5,11 +5,15 @@
   "main": "dup.js",
   "dependencies": {},
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "jest-junit": "^3.0.0"
   },
   "scripts": {
     "test": "jest"
   },
   "author": "Lynk",
-  "license": "MIT"
+  "license": "MIT",
+  "jest-junit": {
+    "output": "./test-report.xml"
+  }
 }
