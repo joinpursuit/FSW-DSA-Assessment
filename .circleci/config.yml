@@ -18,8 +18,8 @@ jobs:
                 npm test --ci --reporters=jest-junit
               environment:
                 JEST_JUNIT_OUTPUT: ~/test-results/junit/results.xml
-      - store_test_results:
-         path: ~/test-results
+            - store_test_results:
+               path: ~/test-results
 workflows:
     build-and-test:
       jobs:
