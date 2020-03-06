@@ -6,7 +6,7 @@ function find_duplicate(arra1) {
 
 
   function sum(a,b) {
-   
+   return a + b;
   };
 
   module.exports = {find_duplicate, sum};
