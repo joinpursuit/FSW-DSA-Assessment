@@ -9,17 +9,25 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm install
-            - run: npm test
+            - checkout
+            - restore_cache:
+               key: npm-cache-v1-{{ checksum "package.json" }}
+            - run:
+                name: Install Dependencies
+              command: yarn install
+            - save_cache:
+              key: npm-cache-v1-{{ checksum "package.json" }}
+              paths:
+            - node_modules
             - run:
               name: Run Tests
-              command: |
-                mkdir -p ~/test-results/junit
-                npm test --ci --reporters=jest-junit
-              environment:
-                JEST_JUNIT_OUTPUT: ~/test-results/junit/results.xml
-            - store_test_results:
-               path: ~/test-results
+               command: |
+               mkdir -p ./test-results/junit
+              yarn test --ci --reporters=jest-junit
+            - store_artifacts:
+              path: ./test-results/junit
+          - store_test_results:
+              path: ./test-results
 workflows:
     build-and-test:
       jobs:
