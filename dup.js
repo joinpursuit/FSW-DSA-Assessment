@@ -4,6 +4,7 @@ function find_duplicate(arra1) {
 
 };
 
+// write a function that adds two numbers 
 
   function sum(a,b) {
 
