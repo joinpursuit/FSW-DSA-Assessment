@@ -2,6 +2,11 @@
 
 function find_duplicate(arra1) {
  
-  }
+  };
 
-  module.exports = find_duplicate;
+
+  function sum(a,b) {
+   
+  };
+
+  module.exports = {find_duplicate, sum};
