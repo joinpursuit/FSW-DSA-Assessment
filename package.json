@@ -2,7 +2,7 @@
   "name": "ctest",
   "version": "1.0.0",
   "description": "dsa test",
-  "main": "sum.js",
+  "main": "dup.js",
   "dependencies": {},
   "devDependencies": {
     "jest": "^25.1.0"
