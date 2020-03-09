@@ -23,9 +23,9 @@ jobs:
             JEST_JUNIT_OUTPUT_NAME: results.xml
           command: yarn test --ci
       - store_test_results:
-          path: ./test-results/jest/results.xml
+          path: test-results/jest
       - store_artifacts:
-          path: ./test-results/jest/results.xml
+          path: test-results/jest
 workflows:
     build-and-test:
       jobs:
