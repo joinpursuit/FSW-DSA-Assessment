@@ -6,13 +6,18 @@
   "dependencies": {},
   "devDependencies": {
     "jest": "^25.1.0",
-    "jest-junit": "^3.0.0"
+    "jest-junit": "^10.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "author": "Lynk",
   "license": "MIT",
+  "jest": {
+    "reporters": [
+      "default"
+    ]
+  },
   "jest-junit": {
     "output": "./test-report.xml"
   }
