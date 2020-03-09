@@ -19,12 +19,13 @@ jobs:
       - run:
           name: "JavaScript Test Suite"
           environment:
-            JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
-          command: yarn test -- --ci --testResultsProcessor="jest-junit"
+            JEST_JUNIT_OUTPUT_DIR: reports/
+            JEST_JUNIT_OUTPUT_NAME: jest-results.xml
+          command: yarn test -- --ci
       - store_test_results:
-          path: reports/junit
+          path: reports/jest-results.xml
       - store_artifacts:
-          path: reports/junit
+          path: reports/jest-results.xml
 workflows:
     build-and-test:
       jobs:

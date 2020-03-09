@@ -15,10 +15,13 @@
   "license": "MIT",
   "jest": {
     "reporters": [
-      "default"
+      "default",
+      "jest-junit"
     ]
   },
   "jest-junit": {
-    "output": "./test-report.xml"
+    "suiteName": "jest tests",
+    "outputDirectory": "./reports",
+    "outputName": "jest-results.xml"
   }
 }
