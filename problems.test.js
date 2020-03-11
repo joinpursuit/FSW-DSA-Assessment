@@ -1,4 +1,5 @@
-const { multiply, arraySquare, recursiveSum } = require('./problems.js');
+const { multiply, arraySquare, recursiveSum, integerRange, inputSum } = require('./problems.js');
+
 
 describe("Question 1", () => {
     test("Returns anything", () => {
@@ -24,9 +25,41 @@ describe("Question 2", () => {
 })
 
 describe("Question 3", () => {
-    test("Is recursive", () => {
-        let mocked = jest.fn((arr) => {console.log(arr)})
-        let result = recursiveSum([1,2,3,4,5])
-        console.log(mocked.mock.calls)
+    test("Returns an integer", () => {
+        // toBeInstanceOf(Number) doesnt work for ints?
+        expect(recursiveSum([1,2,3,4,5])).toEqual(expect.any(Number))
+    })
+
+    test("Is written recursively", () => {
+        let stringed = recursiveSum.toString()
+        let re = new RegExp(/recursiveSum\(/, 'gi')
+        let matches = stringed.match(re)
+        expect(matches.length).toBeGreaterThan(1)
+    })
+
+    test("Returns the correct value", () => {
+        expect(recursiveSum([1,2,3,4,5])).toEqual(15)
+        expect(recursiveSum([-5,-3,1,-243])).toEqual(-250)
+    })
+})
+
+describe("Question 4", () => {
+    test("Returns an integer", () => {
+        expect(integerRange(1, 10)).toEqual(expect.any(Number))
+    })
+
+    test("Returns the correct value", () => {
+        expect(integerRange(1, 10)).toBe(8)
+        expect(integerRange(-203, 816)).toBe(815)
+    })
+})
+
+describe("Question 5", () => {
+    test("Returns a boolean", () => {
+        expect(inputSum([1,2,3], 2)).toBeBoolean()
+    })
+    test("Returns the right value", () => {
+        expect(inputSum([1, 3, 5, 4, 2], 2)).toBe(false)
+        expect(inputSum([1, 3, 5, 4, 2], 7)).toBe(true)
     })
 })
