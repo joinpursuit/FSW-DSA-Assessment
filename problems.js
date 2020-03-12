@@ -85,7 +85,7 @@ function inputSum(arr, targetInt) {
 
 function traverseLinkedList(inputList) {
   if (!inputList) { return [] }
-  return [...[inputList.value], traverseLinkedList(inputList.next)]
+  return [...[inputList.value], traverseLinkedList(inputList.next)].flat()
 }
 
 // Question 7
