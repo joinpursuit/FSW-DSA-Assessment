@@ -38,7 +38,7 @@ function recursiveSum(input) {
 function integerRange(low, high) {
   let count = 0
   for (let i = low; i < high; i++) {
-    count += (val + "").includes("5") ? 0 : 1
+    count += (i + "").includes("5") ? 0 : 1
   }
   return count
 }
