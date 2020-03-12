@@ -40,7 +40,7 @@ function integerRange(low, high) {
     val = Math.abs(val)
     while (val > 0) {
       if (val % 10 == 5) {
-        return true 
+        return true
       }
       val = Math.floor(val / 10)
     }
@@ -48,7 +48,7 @@ function integerRange(low, high) {
   }
   let count = 0
   for (let i = low; i < high; i++) {
-    count += containsFive(i) ? 1 : 0
+    count += containsFive(i) ? 0 : 1
   }
   return count
 }
