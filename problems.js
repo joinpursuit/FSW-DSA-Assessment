@@ -44,7 +44,7 @@ function integerRange(low, high) {
     return true
   }
   let count = 0
-  for (let i = low; val < high; i++) {
+  for (let i = low; i < high; i++) {
     count += containsFive(i) ? 1 : 0
   }
   return count
