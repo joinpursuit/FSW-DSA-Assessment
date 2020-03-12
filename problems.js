@@ -59,7 +59,7 @@ function integerRange(low, high) {
 function inputSum(arr, targetInt) {
   let matchingPairValues = new Set()
   for (let val of arr) {
-    if matchingPairValues.has(val) { return true }
+    if (matchingPairValues.has(val)) { return true }
     matchingPairValues.add(targetInt - val)
   }
   return false
