@@ -36,19 +36,9 @@ function recursiveSum(input) {
 // ex: integerRange(1, 10) should return 8
 
 function integerRange(low, high) {
-  const containsFive = (val) => {
-    val = Math.abs(val)
-    while (val > 0) {
-      if (val % 10 == 5) {
-        return true
-      }
-      val = Math.floor(val / 10)
-    }
-    return false
-  }
   let count = 0
   for (let i = low; i < high; i++) {
-    count += containsFive(i) ? 0 : 1
+    count += (val + "").includes("5") ? 0 : 1
   }
   return count
 }
