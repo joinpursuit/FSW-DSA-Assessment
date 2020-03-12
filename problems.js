@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y
 }
 
 // Question 2
@@ -16,7 +16,7 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return arr.map((x) => x * x)
 }
 
 // Question 3
@@ -26,7 +26,7 @@ function arraySquare(arr) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  return input[0] + recursiveSum(input.slice(1))
 }
 
 // Question 4
@@ -35,7 +35,19 @@ function recursiveSum(input) {
 // ex: integerRange(1, 10) should return 8
 
 function integerRange(low, high) {
-
+  const constainsFive = (val) => {
+    let val = val
+    while (val > 0) {
+      if (val % 10 == 5) { return false }
+      val =/ 10
+    }
+    return true
+  }
+  let count = 0
+  for (let i = low; val < high; i++) {
+    count += constainsFive(i) ? 1 : 0
+  }
+  return count
 }
 
 // Question 5
@@ -46,7 +58,12 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+  let matchingPairValues = new Set()
+  for (let val of arr) {
+    if matchingPairValues.has(val) { return true }
+    matchingPairValues.add(targetInt - val)
+  }
+  return false
 }
 
 // Question 6
@@ -64,21 +81,22 @@ function inputSum(arr, targetInt) {
 // }
 
 function traverseLinkedList(inputList) {
-
+  if (!inputList) { return [] }
+  return [...inputList.value, traverseLinkedList(inputList.next)]
 }
 
 // Question 7
 // Given a binary tree, find its maximum depth.
 // The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 // Note: A leaf is a node with no children.
-// 
+//
 // Example tree, depth is 3. Your function should return an integer only.
 //     3
 //    / \
 //   9   20
 //      /  \
 //     15   7
-// 
+//
 // Definition for a binary tree node.
 //  class TreeNode(val) {
 //     this.val = val;
@@ -87,7 +105,8 @@ function traverseLinkedList(inputList) {
 //  }
 
 function maxDepth(tree) {
-
+  if (!tree) { return 0 }
+  return 1 + Math.max(maxDepth(tree.left), maxDepth(tree.right))
 }
 
 module.exports = {
