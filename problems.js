@@ -35,17 +35,16 @@ function recursiveSum(input) {
 // ex: integerRange(1, 10) should return 8
 
 function integerRange(low, high) {
-  const constainsFive = (val) => {
-    let val = val
+  const containsFive = (val) => {
     while (val > 0) {
       if (val % 10 == 5) { return false }
-      val =/ 10
+      val /= 10
     }
     return true
   }
   let count = 0
   for (let i = low; val < high; i++) {
-    count += constainsFive(i) ? 1 : 0
+    count += containsFive(i) ? 1 : 0
   }
   return count
 }
