@@ -20,25 +20,16 @@ function arraySquare(arr) {
 }
 
 // Question 3
-// Implement a function that accepts an array of integers as an argument.
-// This function should return the sum of all integers in the array.
-// Your solution should be **recursive**.
-// ex: recursiveSum([1,2,3,4,5]) should return 15
-
-function recursiveSum(input) {
-
-}
-
-// Question 4
 // Given two integers (low and high), return how many numbers are in that range that
-// DO NOT contain the number 5. This includes any number that has a 5, like 15, 25, etc.
+// DO NOT contain the number 5. This includes any number that has a 5, like 15, 352, etc.
 // ex: integerRange(1, 10) should return 8
+// ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
 
 }
 
-// Question 5
+// Question 4
 // Write a function that takes an integer and an unsorted array of numbers
 // and returns true if there's any pair of numbers in that array that can be
 // summed up to the input integer.
@@ -46,6 +37,16 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+
+}
+
+// Question 5
+// Implement a function that accepts an array of integers as an argument.
+// This function should return the sum of all integers in the array.
+// Your solution should be **recursive**.
+// ex: recursiveSum([1,2,3,4,5]) should return 15
+
+function recursiveSum(input) {
 
 }
 
@@ -57,10 +58,10 @@ function inputSum(arr, targetInt) {
 //
 // Example of a Linked List Node:
 // class Node {
-//     constructor(value, next = null) {
-//         this.value = value
-//         this.next = next
-//     }
+//   constructor(value, next = null) {
+//     this.value = value
+//     this.next = next
+//   }
 // }
 
 function traverseLinkedList(inputList) {
@@ -71,23 +72,25 @@ function traverseLinkedList(inputList) {
 // Given a binary tree, find its maximum depth.
 // The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 // Note: A leaf is a node with no children.
-// 
+//
 // Example tree, depth is 3. Your function should return an integer only.
 //     3
 //    / \
-//   9   20
+//   2   20
 //      /  \
-//     15   7
-// 
+//     7   25
+//
 // Definition for a binary tree node.
-//  class TreeNode(val) {
-//     this.val = val;
-//     this.left = null;
-//     this.right = null;
-//  }
+// class TreeNode {
+//   constructor(val) {
+//     this.val = val
+//     this.left = null
+//     this.right = null
+//   }
+// }
 
 function maxDepth(tree) {
-
+  
 }
 
 module.exports = {
@@ -98,4 +101,4 @@ module.exports = {
   inputSum,
   traverseLinkedList,
   maxDepth
-};
+}

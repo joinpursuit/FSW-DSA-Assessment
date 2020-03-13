@@ -27,9 +27,13 @@ describe("Question 2, square an array", () => {
 
   test("Returned array is the same length as original", () => {
     let beginningArray = [9, 1, 5, 2]
+    let beginningArrayLength = beginningArray.length
+
     let secondArray = [9, 2, 4, 6, 7, 2, 4, 1, 7, 2, 3, 5, 1112]
-    expect(arraySquare(beginningArray).length).toEqual(beginningArray.length)
-    expect(arraySquare(secondArray).length).toEqual(secondArray.length)
+    let secondArrayLength = secondArray.length
+
+    expect(arraySquare(beginningArray).length).toEqual(beginningArrayLength)
+    expect(arraySquare(secondArray).length).toEqual(secondArrayLength)
   })
 
   test("Returns the correct values in an array", () => {
@@ -38,10 +42,35 @@ describe("Question 2, square an array", () => {
   })
 })
 
-describe("Question 3, recursive sum", () => {
+describe("Question 3, range of integers", () => {
   test("Returns an integer", () => {
-    // toBeInstanceOf(Number) doesnt work for ints?
-    expect(recursiveSum([1, 2, 3, 4, 5])).toEqual(expect.any(Number))
+    expect(integerRange(1, 10)).toBeNumber()
+  })
+
+  test("Returns the correct value", () => {
+    expect(integerRange(1, 10)).toBe(8)
+    expect(integerRange(4, 25)).toBe(19)
+  })
+
+  test("Returns the correct value accounting for negative numbers", () => {
+    expect(integerRange(-203, 816)).toBe(746)
+  })
+})
+
+describe("Question 4, input sum", () => {
+  test("Returns a boolean", () => {
+    expect(inputSum([1, 2, 3], 2)).toBeBoolean()
+  })
+
+  test("Returns the right value", () => {
+    expect(inputSum([1, 3, 5, 4, 2], 2)).toBe(false)
+    expect(inputSum([1, 3, 5, 4, 2], 7)).toBe(true)
+  })
+})
+
+describe("Question 5, recursive sum", () => {
+  test("Returns an integer", () => {
+    expect(recursiveSum([1, 2, 3, 4, 5])).toBeNumber()
   })
 
   test("Is written recursively", () => {
@@ -54,28 +83,6 @@ describe("Question 3, recursive sum", () => {
   test("Returns the correct value", () => {
     expect(recursiveSum([1, 2, 3, 4, 5])).toEqual(15)
     expect(recursiveSum([-5, -3, 1, -243])).toEqual(-250)
-  })
-})
-
-describe("Question 4, range of integers", () => {
-  test("Returns an integer", () => {
-    expect(integerRange(1, 10)).toEqual(expect.any(Number))
-  })
-
-  test("Returns the correct value", () => {
-    expect(integerRange(1, 10)).toBe(8)
-    expect(integerRange(-203, 816)).toBe(815)
-  })
-})
-
-describe("Question 5, input sum", () => {
-  test("Returns a boolean", () => {
-    expect(inputSum([1, 2, 3], 2)).toBeBoolean()
-  })
-
-  test("Returns the right value", () => {
-    expect(inputSum([1, 3, 5, 4, 2], 2)).toBe(false)
-    expect(inputSum([1, 3, 5, 4, 2], 7)).toBe(true)
   })
 })
 
@@ -148,17 +155,63 @@ describe("Question 7, max binary tree depth", () => {
       }
     }
 
-    // class BinaryTree {
-    //   constructor() {
-    //     this.root = null
-    //   }
-    //   addNode(val) {
-    //     if(!this.root) {
-    //       this.root = new TreeNode(val)
-    //     } else {
+    class BinaryTree {
+      constructor() {
+        this.root = null
+      }
 
-    //     }
-    //   }
-    // }
+      addNode(val) {
+        if (!this.root) {
+          this.root = new TreeNode(val)
+        } else {
+          let current = this.root
+
+          while (true) {
+            if (current.val >= val) {
+              if (!current.left) {
+                current.left = new TreeNode(val)
+                return
+              }
+              current = current.left
+            } else if (current.val < val) {
+              if (!current.right) {
+                current.right = new TreeNode(val)
+                return
+              }
+              current = current.right
+            }
+          }
+        }
+      }
+    }
+
+    tree1 = new BinaryTree()
+    tree1.addNode(3)
+    tree1.addNode(2)
+    tree1.addNode(20)
+    tree1.addNode(25)
+    tree1.addNode(7)
+
+    tree2 = new BinaryTree()
+    tree2.addNode(290)
+    tree2.addNode(100)
+    tree2.addNode(500)
+    tree2.addNode(99)
+    tree2.addNode(92)
+    tree2.addNode(91)
+    tree2.addNode(90)
+  })
+
+  test("Returns an integer", () => {
+    expect(maxDepth(tree1.root)).toBeNumber()
+  })
+
+  test("Handles null value passed in", () => {
+    expect(maxDepth(null)).toBe(0)
+  })
+
+  test("Returns the right depth", () => {
+    expect(maxDepth(tree1.root)).toBe(3)
+    expect(maxDepth(tree2.root)).toBe(6)
   })
 })
