@@ -1,8 +1,8 @@
 {
-  "name": "ctest",
+  "name": "dsa_assessment",
   "version": "1.0.0",
-  "description": "dsa test",
-  "main": "dup.js",
+  "description": "DSA Assessment for Pursuit FSW",
+  "main": "problems.js",
   "dependencies": {},
   "devDependencies": {
     "jest": "^25.1.0",
@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest --runInBand"
   },
-  "author": "Lynk",
+  "author": "Lynk & jabyess",
   "license": "MIT",
   "jest": {
     "setupFilesAfterEnv": ["jest-extended"],
