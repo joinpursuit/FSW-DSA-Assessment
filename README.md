@@ -37,7 +37,7 @@ Any modifications to any of these things will cause the tests to break and we wi
 
 ## Submission
 
-When finished, commit your work and make a pull request on the repository.
+When finished, commit your work and make a pull request on the repository. **Put your username as the title of the pull request.**
 
 ## Reading the test output
 
