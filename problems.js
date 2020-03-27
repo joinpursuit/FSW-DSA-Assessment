@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,7 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return arr.map(e => e * e);
 }
 
 // Question 3
@@ -26,7 +26,14 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-
+  let count = 0;
+  if (high <= low) return 0;
+  for (let i = low; i < high; i++) {
+    if (!(i.toString().indexOf("5") > -1)) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 // Question 4
@@ -37,7 +44,20 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  const mapArr = {};
+  arr.forEach((e, i) => {
+    mapArr[e] = i;
+  });
 
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      mapArr[targetInt - arr[i]] !== undefined &&
+      mapArr[targetInt - arr[i]] !== i
+    )
+      return true;
+  }
+
+  return false;
 }
 
 // Question 5
@@ -46,8 +66,10 @@ function inputSum(arr, targetInt) {
 // Your solution should be **recursive**.
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
-function recursiveSum(input) {
+function recursiveSum(input, n) {
+  if (input.length === 0) return 0;
 
+  return input[0] + recursiveSum(input.slice(1));
 }
 
 // Question 6
@@ -65,7 +87,15 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let output = [];
+  let current = inputList;
 
+  while (current) {
+    output.push(current.value);
+    current = current.next;
+  }
+
+  return output;
 }
 
 // Question 7
@@ -90,8 +120,24 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  return maxDepthHelper(tree, 1);
 }
+
+const maxDepthHelper = (root, num) => {
+  if (root === null) return 0;
+
+  if (root.left === null && root.right === null) return num;
+  if (root.left && root.right) {
+    return Math.max(
+      maxDepthHelper(root.right, num + 1),
+      maxDepthHelper(root.left, num + 1)
+    );
+  } else if (root.left) {
+    return maxDepthHelper(root.left, num + 1);
+  } else if (root.right) {
+    return maxDepthHelper(root.right, num + 1);
+  }
+};
 
 module.exports = {
   multiply,
@@ -101,4 +147,4 @@ module.exports = {
   inputSum,
   traverseLinkedList,
   maxDepth
-}
+};
