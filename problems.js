@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y
 }
 
 // Question 2
@@ -16,7 +16,10 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return arr.reduce((acc,curEl) => {
+    acc.push(curEl ** 2)
+    return acc
+  }, [])
 }
 
 // Question 3
