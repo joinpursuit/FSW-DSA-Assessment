@@ -74,7 +74,11 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  if(!inputList) return [];
 
+  const val = inputList.value;
+  const next = inputList.next;
+  return [val,...traverseLinkedList(next)]
 }
 
 // Question 7
