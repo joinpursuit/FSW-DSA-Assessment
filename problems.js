@@ -103,7 +103,7 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  return tree ? Math.max(maxDepth(tree.left), maxDepth(tree.right)) + 1 : 0
 }
 
 module.exports = {
