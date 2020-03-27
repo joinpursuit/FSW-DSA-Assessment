@@ -92,7 +92,14 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let arr = new Array();
+  let current = inputList;
 
+  while(current) {
+    arr.push(current.value);
+    current = current.next;
+  };
+  return arr;
 }
 
 // Question 7
