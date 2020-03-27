@@ -53,7 +53,6 @@ function inputSum(arr, targetInt) {
   arr.sort((a, b) => {return a-b})
   
   for(let i = 0; i < arr.length;i++){
-    
     for(let j = 0; j < arr.length; j++){
       if(arr[i] + arr[j] === targetInt && arr[i] !== arr[j]){
         return true
@@ -72,8 +71,8 @@ function inputSum(arr, targetInt) {
 function recursiveSum(input) {
   let results = 0
   if(input.length === 0) return results
-  results = input[0]
-  return results + recursiveSum(input.slice(1))
+    results = input[0]
+    return results + recursiveSum(input.slice(1))
 }
 
 // Question 6
@@ -124,7 +123,7 @@ function traverseLinkedList(inputList) {
 function maxDepth(tree) {
   let currentNode = tree
   if(currentNode === null) return 0 
-  return 1 + Math.max(maxDepth(currentNode.left) , maxDepth(currentNode.right))
+    return 1 + Math.max(maxDepth(currentNode.left) , maxDepth(currentNode.right))
 }
 
 module.exports = {
