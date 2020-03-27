@@ -8,6 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
+  return x * y
 
 }
 
@@ -16,6 +17,11 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
+  let squaredArray=[];
+  for(i=0; i<arr.length;i++){
+    squaredArray.push(arr[i]*arr[i])
+  }
+  return squaredArray
 
 }
 
@@ -25,7 +31,14 @@ function arraySquare(arr) {
 // ex: integerRange(1, 10) should return 8
 // ex: integerRange(4, 25) should return 19
 
-function integerRange(low, high) {
+function integerRange(low, high) { 
+  if (low <high){
+    for(let i=low; i<Infinity; i++){
+      if([-5,5].indexOf(i)===-1){
+      return i}
+    }
+  
+  }
 
 }
 
@@ -37,7 +50,11 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+arr.forEach(funtion=>(element)=>{ for(let j=0;j<arr.length;j++){
+  if(element+arr[j]===targetInt)
+{return true}else {return false}
+}
+})
 }
 
 // Question 5
@@ -47,6 +64,11 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
+  if(input.length===1){
+    return input[0]
+  }else{
+    return input.pop()+recursiveSum(input)
+  }
 
 }
 
@@ -65,7 +87,13 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let listArray=[];
+  if(inputList.head==null){
 
+  }else {listArray.push(inputList.head)
+  inputList.head=inputList.head.next
+  }
+  return listArray
 }
 
 // Question 7
@@ -90,6 +118,20 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
+  return maxDepthHandler(tree,1)
+  function maxDepthHandler(tree,num){
+    if (tree===null){
+      return 0
+    } if(tree.right==null&& tree.left==null){
+      return num
+    }if (tree.right&&tree.left){
+      return Math.max(maxDepthHandler(tree.right, num+1),maxDepthHandler(tree.left, num+1))
+    }else if(tree.right !=null){
+      return maxDepthHandler(tree.right, num+1)
+    }else{
+      return maxDepthHandler(tree.left, num+1)
+    }
+  }
   
 }
 
