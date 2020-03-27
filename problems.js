@@ -41,7 +41,12 @@ const hasFive = (num) => num.toString().includes('5');
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  const neededObj = arr.reduce((res, el, i) =>{
+    res[targetInt - el] = i 
+    return res
+ },{})
 
+ return arr.some( (el, i) => neededObj[el] && !(i === neededObj[el]))
 }
 
 // Question 5
