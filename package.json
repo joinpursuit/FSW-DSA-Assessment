@@ -15,7 +15,9 @@
   "author": "Lynk & jabyess",
   "license": "MIT",
   "jest": {
-    "setupFilesAfterEnv": ["jest-extended"],
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ],
     "reporters": [
       "default",
       "jest-junit"
