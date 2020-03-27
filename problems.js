@@ -29,37 +29,17 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-  let arrNums = []
+  let numsArr = []
   let count = 0
-  for(let i = low; i < high; i++){
-    arrNums.push(i)
-  }
-  console.log(arrNums)
-  let idx = 0
-  while(idx < arrNums.length){
-    let current = arrNums[idx].toString()
-    if(current.length > 1){
-      //console.log(current[current.length - 1])
-     // console.log(current)
-      if(current.slice(1) === "5"){
-        console.log(current)
-        count = count + 1
-        //arrNums.splice(idx,1)
-        
-      }
+  while(low < high){
+    numsArr.push(low)
+    let current = low.toString()
+    if(current.includes("5")){
+      count = count + 1
     }
-    else{
-      if(parseInt(current) === 5){
-        console.log(current)
-        count = count + 1
-       //arrNums.splice(idx,1)
-      }
-    }
-    
-    idx++
+    low++
   }
-return (arrNums.length) - count
-
+  return (numsArr.length - count)
 }
 
 // Question 4
@@ -142,7 +122,9 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  let currentNode = tree
+  if(currentNode === null) return 0 
+  return 1 + Math.max(maxDepth(currentNode.left) , maxDepth(currentNode.right))
 }
 
 module.exports = {
