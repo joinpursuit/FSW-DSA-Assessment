@@ -124,7 +124,11 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  let node = tree;
+  if(node) {
+    return Math.max(maxDepth(node.left), maxDepth(node.right)) + 1;
+  };
+  return 0;
 }
 
 module.exports = {
