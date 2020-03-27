@@ -28,6 +28,12 @@ function arraySquare(arr) {
 function integerRange(low, high) {
 
 }
+const numSplitter = (num) =>{
+  if(!num) return [];
+  let remainder = num % 10;
+  let floored = Math.floor(num / 10)
+  return[...numSplitter(floored),remainder]
+}
 
 // Question 4
 // Write a function that takes an integer and an unsorted array of numbers
