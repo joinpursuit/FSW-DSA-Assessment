@@ -26,18 +26,12 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-  if(low > high) return 0;
+  if(low >= high) return 0;
 
   if(!hasFive(low)) return 1 + integerRange(low + 1, high);
   else return integerRange(low + 1, high);
 }
-const numSplitter = (num) =>{
-  if(!num) return [];
-  let remainder = num % 10;
-  let floored = Math.floor(num / 10)
-  return[...numSplitter(floored),remainder]
-}
-const hasFive = (num) => numSplitter(num).includes(5);
+const hasFive = (num) => num.toString().includes('5');
 
 // Question 4
 // Write a function that takes an integer and an unsorted array of numbers
