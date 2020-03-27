@@ -50,11 +50,14 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  let answer;
 arr.forEach(funtion=>(element)=>{ for(let j=0;j<arr.length;j++){
   if(element+arr[j]===targetInt)
-{return true}else {return false}
+{answer= true}else {answer= false}
 }
+
 })
+return answer
 }
 
 // Question 5
