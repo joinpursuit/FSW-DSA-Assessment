@@ -73,7 +73,8 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  if(!input.length) return 0;
+  return input[0] + recursiveSum(input.slice(1))
 }
 
 // Question 6
