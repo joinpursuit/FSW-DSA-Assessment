@@ -26,7 +26,22 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let count = 0;
 
+    const numberWithoutFive = (n) => {
+      n = n.toString().split("");
+      if(!n.length) return true;
+      
+      if(parseInt(n[0]) === 5) return false;
+      else {
+        return numberWithoutFive(n.slice(1).join(""));
+      }
+    };
+
+  for(let num = low; num < high; num++) {
+    if(num !== 5 && numberWithoutFive(num) === true) count++;
+  }
+  return count;
 }
 
 // Question 4
@@ -37,7 +52,18 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  arr = arr.sort((a,b) => a-b);
 
+    function addsToTarget(arr, n, target) {
+      if(!arr.length) return false;
+      if(arr[0] !== n && arr[0] + n === target) return true;
+      else return addsToTarget(arr.slice(1), n, target)
+    }
+
+  for(let num of arr) {
+    if(addsToTarget(arr, num, targetInt) === true) return true;
+  }
+  return false;
 }
 
 // Question 5
