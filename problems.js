@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,12 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
+  let newArr = [];
 
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr[i] * arr[i]);
+  }
+  return newArr;
 }
 
 // Question 3
@@ -26,7 +31,19 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let nums = [];
+  let count = 0;
+  for (let i = low; i < high; i++) {
+    nums.push(i);
+  }
 
+  for (let i = 0; i < nums.length; i++) {
+    let stringified = nums[i].toString();
+    if (!stringified.includes("5" || "-5")) {
+      count++;
+    }
+  }
+  return count;
 }
 
 // Question 4
@@ -37,7 +54,20 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  let left = 0;
+  let right = arr.length - 1;
 
+  while (left <= right) {
+    let sum = arr[left] + arr[right];
+    if (sum === targetInt) {
+      return true;
+    } else if (!sum === targetInt) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+  return false;
 }
 
 // Question 5
@@ -47,7 +77,10 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  while (input.length === 1) {
+    return input[0];
+  }
+  return input.pop() + recursiveSum(input);
 }
 
 // Question 6
@@ -65,7 +98,16 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let results = [];
+  if (!inputList) {
+    return [];
+  }
 
+  while (inputList) {
+    results.push(inputList.value);
+    inputList = inputList.next;
+  }
+  return results;
 }
 
 // Question 7
@@ -90,7 +132,14 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if (!tree) {
+    return 0;
+  }
+  let left = maxDepth(tree.left);
+  let right = maxDepth(tree.right);
+  if (left > right) {
+    return 1 + left;
+  } else return 1 + right;
 }
 
 module.exports = {
