@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,7 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return Array.from(arr, x => x * x);
 }
 
 // Question 3
@@ -26,7 +26,15 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-
+  let count = 0;
+  for (let i = low; i < high; i++) {
+    const str = i.toString();
+    for (let j = 0; j < str.length; j++) {
+      if (str[j] === "5") break;
+      else if (j === str.length - 1 && str[j] !== "5") count++;
+    }
+  }
+  return count;
 }
 
 // Question 4
@@ -37,7 +45,15 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+  arr = arr.sort((a, b) => a - b);
+  let i = 0;
+  let j = arr.length - 1;
+  while (i < j) {
+    if (arr[i] + arr[j] === targetInt) return true;
+    else if (arr[i] + arr[j] > targetInt) j--;
+    else i++;
+  }
+  return false;
 }
 
 // Question 5
@@ -47,7 +63,8 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  if (input.length === 1) return input[0];
+  return input[0] + recursiveSum(input.slice(1));
 }
 
 // Question 6
@@ -65,7 +82,13 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-
+  const arr = [];
+  let node = inputList;
+  while (node !== null) {
+    arr.push(node.value);
+    node = node.next;
+  }
+  return arr;
 }
 
 // Question 7
@@ -90,7 +113,12 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if (tree === null) return 0;
+  if (tree.left !== null && tree.right === null) return 1 + maxDepth(tree.left);
+  else if (tree.left === null && tree.right !== null)
+    return 1 + maxDepth(tree.right);
+  else if (tree.left === null && tree.right === null) return 1;
+  else return Math.max(1 + maxDepth(tree.left), 1 + maxDepth(tree.right));
 }
 
 module.exports = {
@@ -101,4 +129,4 @@ module.exports = {
   inputSum,
   traverseLinkedList,
   maxDepth
-}
+};
