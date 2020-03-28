@@ -33,7 +33,7 @@ function arraySquare(arr) {
 
 function integerRange(low, high) { 
   if (low <high){
-    for(let i=low; i<Infinity; i++){
+    for(let i=low; i<high; i++){
       if([-5,5].indexOf(i)===-1){
       return i}
     }
