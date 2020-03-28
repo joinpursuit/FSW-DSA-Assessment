@@ -7,17 +7,13 @@
 // Write a function that returns two numbers multiplied
 // ex: multiply(5, 10) should return 50
 
-function multiply(x, y) {
-
-}
+const multiply = (x, y) => x * y;
 
 // Question 2
 // Given an array of integers, return a new array of the same length that contains the original values squared.
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
-function arraySquare(arr) {
-
-}
+const arraySquare = arr => arr.map(val => Math.pow(val, 2));
 
 // Question 3
 // Given two integers (low and high), return how many numbers are in that range that
@@ -25,9 +21,13 @@ function arraySquare(arr) {
 // ex: integerRange(1, 10) should return 8
 // ex: integerRange(4, 25) should return 19
 
-function integerRange(low, high) {
-
-}
+const integerRange = (low, high) => {
+  let count = 0;
+  for (let i = low; i < high; i++) {
+    if (!`${i}`.includes(`5`)) count++;
+  }
+  return count;
+};
 
 // Question 4
 // Write a function that takes an integer and an unsorted array of numbers
@@ -36,9 +36,10 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 7) should return true
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
-function inputSum(arr, targetInt) {
-
-}
+const inputSum = (arr, targetInt) =>
+  arr.filter((num, i) =>
+    [...arr.slice(0, i), ...arr.slice(i + 1)].includes(targetInt - num)
+  ).length > 0;
 
 // Question 5
 // Implement a function that accepts an array of integers as an argument.
@@ -47,7 +48,7 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  return input.length === 0 ? 0 : input[0] + recursiveSum(input.slice(1));
 }
 
 // Question 6
@@ -64,9 +65,15 @@ function recursiveSum(input) {
 //   }
 // }
 
-function traverseLinkedList(inputList) {
-
-}
+const traverseLinkedList = inputList => {
+  const result = [];
+  let curr = inputList;
+  while (curr) {
+    result.push(curr.value);
+    curr = curr.next;
+  }
+  return result;
+};
 
 // Question 7
 // Given a binary tree, find its maximum depth.
@@ -89,9 +96,8 @@ function traverseLinkedList(inputList) {
 //   }
 // }
 
-function maxDepth(tree) {
-  
-}
+const maxDepth = tree =>
+  tree ? Math.max(maxDepth(tree.left), maxDepth(tree.right)) + 1 : 0;
 
 module.exports = {
   multiply,
@@ -101,4 +107,4 @@ module.exports = {
   inputSum,
   traverseLinkedList,
   maxDepth
-}
+};
