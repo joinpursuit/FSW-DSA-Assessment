@@ -1,22 +1,17 @@
-// Do not change any of the function names or the function signatures
-// (the number of arguments in a function)
-// or else the tests will not pass.
-// e.g. don't change multiply(x, y) to multiply(x,y,z)
-
 // Question 1
 // Write a function that returns two numbers multiplied
 // ex: multiply(5, 10) should return 50
 
-function multiply(x, y) {
-
-}
+function multiply(x, y){
+    return x*y
+} 
 
 // Question 2
 // Given an array of integers, return a new array of the same length that contains the original values squared.
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
-function arraySquare(arr) {
-
+function arraySquare(arr){
+    return arr.map(integer => integer*integer)
 }
 
 // Question 3
@@ -26,7 +21,15 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+    if(low>high) return 0
+    let counter = 0
 
+    for(var i = low; i<high; i++ ){
+        if(!i.toString().includes('5')) {
+            counter++
+        }
+    }
+    return counter
 }
 
 // Question 4
@@ -37,7 +40,18 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+    for(var i = 0; i<arr.length;i++){
+        let currentElement = arr.shift()
+        for(var j=0; j<arr.length+1;j++){
+            if((currentElement+arr[j]===targetInt)){
+                return true
+            }
+            if((i===arr.length-1&&(currentElement + arr[arr.length-1])!==targetInt)){
+                return false
+            }
+        }
+        arr.push(currentElement)
+    }
 }
 
 // Question 5
@@ -47,7 +61,12 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+    if (input.length===1){
+        return input[0]
+    }
+    else {
+        return input.pop() + recursiveSum(input)
+    }
 }
 
 // Question 6
@@ -65,7 +84,14 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-
+    let catcher=[], 
+    node = inputList;
+    
+    while(node){
+    catcher.push(node.value);
+    node = node.next;
+  }
+  return catcher
 }
 
 // Question 7
@@ -90,15 +116,20 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
-}
+    if(tree){
+        return Math.max(maxDepth(tree.left), maxDepth(tree.right)) + 1
+    }
+    else{
+        return 0
+    }
+}	
 
 module.exports = {
-  multiply,
-  arraySquare,
-  recursiveSum,
-  integerRange,
-  inputSum,
-  traverseLinkedList,
-  maxDepth
-}
+    multiply,
+    arraySquare,
+    recursiveSum,
+    integerRange,
+    inputSum,
+    traverseLinkedList,
+    maxDepth
+  }
