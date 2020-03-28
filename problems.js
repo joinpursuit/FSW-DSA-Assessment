@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x*y
 }
 
 // Question 2
@@ -16,17 +16,32 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
+  let newArr = []
 
+  for(let i=0; i<arr.length; i++){
+    newArr.push(arr[i] ** 2);
+  }
+
+  return newArr;
 }
 
 // Question 3
 // Given two integers (low and high), return how many numbers are in that range that
 // DO NOT contain the number 5. This includes any number that has a 5, like 15, 352, etc.
-// ex: integerRange(1, 10) should return 8
+// ex: integerRange(1, 10) should return 8 
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let count = 0;
 
+  for(let i=low; i<high; i++){
+    
+    if(!`${i}`.split('').includes(`${5}`)){
+      count++
+    }
+  }
+  
+  return count
 }
 
 // Question 4
@@ -37,7 +52,22 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  
+  let sortedArr = arr.sort();
 
+  let start = 0;
+  let end = arr.length - 1;
+
+  while(start< end){
+    if (sortedArr[start] + sortedArr[end] === targetInt){
+      return true
+    } else if (sortedArr[start] + sortedArr[end] < targetInt) {
+      start++
+    } else {
+      return false
+    }
+  }
+  
 }
 
 // Question 5
@@ -47,7 +77,10 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  if( input.length === 0 ) {
+    return 0
+  }  
+  return 'not sure'
 }
 
 // Question 6
@@ -65,7 +98,16 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let current = inputList;
+  let arr = []
+  while(current){
 
+    arr.push(current.value)
+    current = current.next
+  } 
+
+
+  return arr
 }
 
 // Question 7
@@ -90,7 +132,7 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  return `i dont remember`
 }
 
 module.exports = {
