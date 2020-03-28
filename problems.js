@@ -16,7 +16,8 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  let outputArr = arr.map(e => e * e);
+  return outputArr;
 }
 
 // Question 3
