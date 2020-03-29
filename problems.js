@@ -27,7 +27,20 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let numCount = 0;
+  let curr = low;
 
+  while (curr < high) {
+    if (curr.toString().includes('5') === true) {
+      curr++;
+      continue;
+    } 
+    else if (curr.toString().includes('5') === false) {
+      numCount++;
+      curr++;
+    }
+  }
+  return numCount;
 }
 
 // Question 4
