@@ -130,7 +130,20 @@ function traverseLinkedList(inputList) {
 //   }
 // }
 
-function maxDepth(tree) {}
+function maxDepth(tree) {
+  //handle null input
+  if (tree === null) return 0;
+
+  console.log("tree:", tree);
+  //DFS
+  //recursivly traverse both sides of the tree to find their depth
+  let left = maxDepth(tree.left);
+  let right = maxDepth(tree.right);
+
+  //return int
+  // add 1 to the max depth to account for curr node
+  return Math.max(left, right) + 1;
+}
 
 module.exports = {
   multiply,
