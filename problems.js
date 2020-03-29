@@ -88,7 +88,7 @@ function recursiveSum(input) { // [1,2,3,4,5]
 
 function traverseLinkedList(inputList) {
   let outputArr = [];
-  let curr = inputList.head;
+  let curr = inputList;
   
   while (curr) {
     outputArr.push(curr.value);
