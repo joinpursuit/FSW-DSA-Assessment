@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,9 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return arr.map(el => {
+    return el * el;
+  });
 }
 
 // Question 3
@@ -26,7 +28,20 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let count = 0;
 
+  // traverse numbers starting from low and till we get to high
+
+  for (let i = low; i < high; i++) {
+    //check if number contains 5. if yes, skip. if no count++
+
+    if (i.toString().match(/5/) === null) {
+      count++;
+    }
+  }
+
+  //return int
+  return count;
 }
 
 // Question 4
@@ -37,7 +52,15 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  //return boolean
 
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === targetInt) return true;
+    }
+  }
+
+  return false;
 }
 
 // Question 5
@@ -47,7 +70,14 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
+  //base case1
+  if (!input.length) return;
 
+  //base case2
+  if (input.length === 1) return input[0];
+
+  //remove one element at a time (use pop or slice) and recursivly add it w/ the rest
+  return input.pop() + recursiveSum(input);
 }
 
 // Question 6
@@ -65,7 +95,18 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  // console.log('ll', inputList);
+  let output = [];
 
+  let current = inputList;
+
+  while (current) {
+    output.push(current.value);
+
+    current = current.next;
+  }
+
+  return output;
 }
 
 // Question 7
@@ -90,7 +131,18 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  //handle null input
+  if (tree === null) return 0;
+
+  console.log("tree:", tree);
+  //DFS
+  //recursivly traverse both sides of the tree to find their depth
+  let left = maxDepth(tree.left);
+  let right = maxDepth(tree.right);
+
+  //return int
+  // add 1 to the max depth to account for curr node
+  return Math.max(left, right) + 1;
 }
 
 module.exports = {
@@ -101,4 +153,4 @@ module.exports = {
   inputSum,
   traverseLinkedList,
   maxDepth
-}
+};
