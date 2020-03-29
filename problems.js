@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,9 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  return arr.map(el => {
+    return el * el;
+  });
 }
 
 // Question 3
@@ -26,7 +28,18 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let results = [];
+  // traverse numbers starting from low and till we get to high
 
+  for (let i = low; i <= high; i++) {
+    if (i % 10 !== 5) {
+      results.push(i);
+    }
+  }
+  // check if number contains 5. if yes, skip. if no push to array
+
+  //return int: return array.len - 1
+  return results.length - 1;
 }
 
 // Question 4
@@ -37,7 +50,15 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  //return boolean
 
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === targetInt) return true;
+    }
+  }
+
+  return false;
 }
 
 // Question 5
@@ -47,7 +68,14 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
+  //base case1
+  if (!input.length) return;
 
+  //base case2
+  if (input.length === 1) return input[0];
+
+  //remove one element at a time (use pop or slice) and recursivly add it w/ the rest
+  return input.pop() + recursiveSum(input);
 }
 
 // Question 6
@@ -64,9 +92,7 @@ function recursiveSum(input) {
 //   }
 // }
 
-function traverseLinkedList(inputList) {
-
-}
+function traverseLinkedList(inputList) {}
 
 // Question 7
 // Given a binary tree, find its maximum depth.
@@ -89,9 +115,7 @@ function traverseLinkedList(inputList) {
 //   }
 // }
 
-function maxDepth(tree) {
-  
-}
+function maxDepth(tree) {}
 
 module.exports = {
   multiply,
@@ -100,5 +124,5 @@ module.exports = {
   integerRange,
   inputSum,
   traverseLinkedList,
-  maxDepth
-}
+  maxDepth,
+};
