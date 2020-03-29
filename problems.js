@@ -51,7 +51,12 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  for (let i = 0; i < arr.length; i++) {
+    let difference = targetInt - arr[i];
 
+    if (arr.includes(difference) && arr.indexOf(difference) !== i) return true;
+  }
+  return false;
 }
 
 // Question 5
