@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,8 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  let outputArr = arr.map(e => e * e);
+  return outputArr;
 }
 
 // Question 3
@@ -26,7 +27,20 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let numCount = 0;
+  let curr = low;
 
+  while (curr < high) {
+    if (curr.toString().includes('5') === true) {
+      curr++;
+      continue;
+    } 
+    else if (curr.toString().includes('5') === false) {
+      numCount++;
+      curr++;
+    }
+  }
+  return numCount;
 }
 
 // Question 4
@@ -37,7 +51,12 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  for (let i = 0; i < arr.length; i++) {
+    let difference = targetInt - arr[i];
 
+    if (arr.includes(difference) && arr.indexOf(difference) !== i) return true;
+  }
+  return false;
 }
 
 // Question 5
@@ -46,8 +65,11 @@ function inputSum(arr, targetInt) {
 // Your solution should be **recursive**.
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
-function recursiveSum(input) {
-
+function recursiveSum(input) { // [1,2,3,4,5]
+  if (input.length === 1) return input[0];
+  else {
+    return input[0] + recursiveSum(input.slice(1));
+  }
 }
 
 // Question 6
@@ -65,7 +87,14 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-
+  let outputArr = [];
+  let curr = inputList;
+  
+  while (curr) {
+    outputArr.push(curr.value);
+    curr = curr.next;
+  }
+  return outputArr;
 }
 
 // Question 7
@@ -90,7 +119,17 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if (tree === null) return 0;
+
+  let depth = 0;
+
+  const recurse = (tree, depth) => {
+    if (tree.left && tree.right) {
+      depth++;
+      return Math.max(recurse(tree.left, depth), recurse(tree.right, depth));
+    }
+  }
+  return depth;
 }
 
 module.exports = {
