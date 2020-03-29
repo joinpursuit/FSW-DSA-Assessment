@@ -28,18 +28,20 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-  let results = [];
+  let count = 0;
+
   // traverse numbers starting from low and till we get to high
 
-  for (let i = low; i <= high; i++) {
-    if (i % 10 !== 5) {
-      results.push(i);
+  for (let i = low; i < high; i++) {
+    //check if number contains 5. if yes, skip. if no count++
+
+    if (i.toString().match(/5/) === null) {
+      count++;
     }
   }
-  // check if number contains 5. if yes, skip. if no push to array
 
-  //return int: return array.len - 1
-  return results.length - 1;
+  //return int
+  return count;
 }
 
 // Question 4
@@ -92,7 +94,20 @@ function recursiveSum(input) {
 //   }
 // }
 
-function traverseLinkedList(inputList) {}
+function traverseLinkedList(inputList) {
+  // console.log('ll', inputList);
+  let output = [];
+
+  let current = inputList;
+
+  while (current) {
+    output.push(current.value);
+
+    current = current.next;
+  }
+
+  return output;
+}
 
 // Question 7
 // Given a binary tree, find its maximum depth.
@@ -124,5 +139,5 @@ module.exports = {
   integerRange,
   inputSum,
   traverseLinkedList,
-  maxDepth,
+  maxDepth
 };
