@@ -8,16 +8,22 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
+
 
 // Question 2
 // Given an array of integers, return a new array of the same length that contains the original values squared.
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-
+  let results = [];
+  for(let i = 0; i < arr.length; i++) {
+    results.push(Math.pow(arr[i], 2))
+  }
+  return results;
 }
+
 
 // Question 3
 // Given two integers (low and high), return how many numbers are in that range that
@@ -26,8 +32,19 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
-
+  let counter = 0;
+  for(let i = low; i < high; i++) {
+    let numStr = i.toString();
+    counter++;
+    for(let j = 0; j < numStr.length; i++) {
+      if(numStr[j] === '5') {
+        counter --;
+      }
+    }
+  }
+  return counter;
 }
+
 
 // Question 4
 // Write a function that takes an integer and an unsorted array of numbers
@@ -37,7 +54,14 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+  for(let i = 0; i < arr.length; i++){
+    for(let j = 1; j < arr.length; j++){
+      if(arr[i] + arr[j] === targetInt){
+        return true
+      }
+    }
+  }
+  return false 
 }
 
 // Question 5
@@ -47,7 +71,11 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  if(input.length < 2) {
+    return input[0]
+  }
+  input[0] = input[0] + input.pop()
+  return recursiveSum(input)
 }
 
 // Question 6
@@ -65,7 +93,13 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-
+  let result = [];
+  let currPtr = inputList;
+  while (currPtr != null) {
+    result.push(currPtr.value)
+    currPtr = currPtr.next;
+  }
+  return result;
 }
 
 // Question 7
@@ -90,7 +124,22 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  return lengthOfBranch(tree, 0)
+}
+
+function lengthOfBranch(tree, length) {
+  if(tree === null) {
+    return length
+  }
+  if(tree.left === null && tree.right === null){
+    return length+1
+  } 
+  length++
+
+  let leftSide = lengthOfBranch(tree.left, length);
+  let rightSide = lengthOfBranch(tree.right, length);
+
+  return Math.max(leftSide, rightSide)
 }
 
 module.exports = {
@@ -102,3 +151,4 @@ module.exports = {
   traverseLinkedList,
   maxDepth
 }
+
