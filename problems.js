@@ -119,7 +119,17 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if (tree === null) return 0;
+
+  let depth = 0;
+
+  const recurse = (tree, depth) => {
+    if (tree.left && tree.right) {
+      depth++;
+      return Math.max(recurse(tree.left, depth), recurse(tree.right, depth));
+    }
+  }
+  return depth;
 }
 
 module.exports = {
