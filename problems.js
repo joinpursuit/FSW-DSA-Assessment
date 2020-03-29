@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,7 +16,13 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
+  const output = [];
 
+  for(let number of arr) {
+    output.push(number * number)
+  }
+
+  return output;
 }
 
 // Question 3
@@ -26,6 +32,16 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) {
+  let counter = 0;
+
+  for(let i = low; i < high; i++){ 
+    let num = i.toString();
+    if(!num.includes('5')){
+      counter++;
+    }
+  }
+
+  return counter;
 
 }
 
@@ -37,7 +53,14 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-
+  for(let i = 0; i < arr.length; i++){
+    for(let j = i+1; j < arr.length; j++){
+      if(arr[i] + arr[j] === targetInt){
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 // Question 5
@@ -47,6 +70,11 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
+  if(input.length <= 0) return 0;
+
+  let sum = 0
+
+  return sum = input[0] + recursiveSum(input.slice(1));
 
 }
 
@@ -65,7 +93,12 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-
+  const linkedListArray = []
+  while(inputList){
+    linkedListArray.push(inputList.value)
+    inputList = inputList.next;
+  }
+  return linkedListArray;
 }
 
 // Question 7
@@ -90,7 +123,12 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if (tree == null) return 0;
+
+  let left = maxDepth(tree.left);
+  let right = maxDepth(tree.right);
+
+  return Math.max(left, right) + 1;
 }
 
 module.exports = {
