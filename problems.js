@@ -79,8 +79,10 @@ function inputSum(arr, targetInt) {
 function recursiveSum(input) {
   if( input.length === 0 ) {
     return 0
-  }  
-  return 'not sure'
+  } 
+  let num = input.pop()
+
+  return num + recursiveSum(input)
 }
 
 // Question 6
@@ -107,7 +109,7 @@ function traverseLinkedList(inputList) {
   } 
 
 
-  return arr
+  return arr 
 }
 
 // Question 7
@@ -132,7 +134,22 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  return `i dont remember`
+  let max = 0
+
+  const search = ( node , level ) => {
+    if(node === null ) return 
+
+    if(level > max) {
+      max = level
+    }
+
+    search(node.left, level+1)
+    search(node.right, level+1)
+  }
+
+  search(tree, 1)
+
+  return max
 }
 
 module.exports = {
