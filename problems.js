@@ -17,9 +17,9 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
-  let squaredArray=[];
-  for(i=0; i<arr.length;i++){
-    squaredArray.push(arr[i]*arr[i])
+  let squaredArray = [];
+  for (i = 0; i < arr.length; i++) {
+    squaredArray.push(arr[i] * arr[i])
   }
   return squaredArray
 
@@ -31,16 +31,17 @@ function arraySquare(arr) {
 // ex: integerRange(1, 10) should return 8
 // ex: integerRange(4, 25) should return 19
 
-function integerRange(low, high) { 
-  let inRange=[];
-  let floor= Number(low);
-  let ceiling=Number(high);
-  if (low <high){
-    for(let i= floor; i<ceiling; i++){
-      if(!i.toString().includes(5)){
-      inRange.push(i) }
+function integerRange(low, high) {
+  let inRange = [];
+  let floor = Number(low);
+  let ceiling = Number(high);
+  if (low < high) {
+    for (let i = floor; i < ceiling; i++) {
+      if (!i.toString().includes(5)) {
+        inRange.push(i)
+      }
     }
-  
+
   }
   return inRange.length
 
@@ -54,15 +55,15 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-  let hitTarget= false;
- for (var i=0;i<arr.length;i++){
-   for(var j=i+1; j<arr.length;j++){
-     if (arr[i]+arr[j]===targetInt){
-       hitTarget=true
-     }
-   }
- }
- return hitTarget
+  let hitTarget = false;
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === targetInt) {
+        hitTarget = true
+      }
+    }
+  }
+  return hitTarget
 }
 
 // Question 5
@@ -72,10 +73,10 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-  if(input.length===1){
+  if (input.length === 1) {
     return input[0]
-  }else{
-    return input.pop()+recursiveSum(input)
+  } else {
+    return input.pop() + recursiveSum(input)
   }
 
 }
@@ -95,11 +96,11 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
-  let listArray=[];
-   iterate=inputList;
-    while(iterate!==null){
+  let listArray = [];
+  iterate = inputList;
+  while (iterate !== null) {
     listArray.push(iterate.value)
-  iterate=iterate.next
+    iterate = iterate.next
   }
   return listArray
 }
@@ -126,21 +127,24 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  return maxDepthHandler(tree,1)
-  function maxDepthHandler(tree,num){
-    if (tree===null){
+  return maxDepthHandler(tree, 1)
+
+  function maxDepthHandler(tree, num) {
+    if (tree === null) {
       return 0
-    } if(tree.right==null&& tree.left==null){
+    }
+    if (tree.right == null && tree.left == null) {
       return num
-    }if (tree.right&&tree.left){
-      return Math.max(maxDepthHandler(tree.right, num+1),maxDepthHandler(tree.left, num+1))
-    }else if(tree.right !=null){
-      return maxDepthHandler(tree.right, num+1)
-    }else{
-      return maxDepthHandler(tree.left, num+1)
+    }
+    if (tree.right && tree.left) {
+      return Math.max(maxDepthHandler(tree.right, num + 1), maxDepthHandler(tree.left, num + 1))
+    } else if (tree.right != null) {
+      return maxDepthHandler(tree.right, num + 1)
+    } else {
+      return maxDepthHandler(tree.left, num + 1)
     }
   }
-  
+
 }
 
 module.exports = {
