@@ -32,13 +32,17 @@ function arraySquare(arr) {
 // ex: integerRange(4, 25) should return 19
 
 function integerRange(low, high) { 
+  let inRange=[];
+  let floor= Number(low);
+  let ceiling=Number(high);
   if (low <high){
-    for(let i=low; i<high; i++){
-      if([-5,5].indexOf(i)===-1){
-      return i}
+    for(let i= floor; i<ceiling; i++){
+      if(!i.toString().includes(5)){
+      inRange.push(i) }
     }
   
   }
+  return inRange.length
 
 }
 
@@ -50,14 +54,15 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
-  let answer;
-arr.forEach(funtion=>(element)=>{ for(let j=0;j<arr.length;j++){
-  if(element+arr[j]===targetInt)
-{answer= true}else {answer= false}
-}
-
-})
-return answer
+  let hitTarget= false;
+ for (var i=0;i<arr.length;i++){
+   for(var j=i+1; j<arr.length;j++){
+     if (arr[i]+arr[j]===targetInt){
+       hitTarget=true
+     }
+   }
+ }
+ return hitTarget
 }
 
 // Question 5
@@ -91,10 +96,10 @@ function recursiveSum(input) {
 
 function traverseLinkedList(inputList) {
   let listArray=[];
-  if(inputList.head==null){
-
-  }else {listArray.push(inputList.head)
-  inputList.head=inputList.head.next
+   iterate=inputList;
+    while(iterate!==null){
+    listArray.push(iterate.value)
+  iterate=iterate.next
   }
   return listArray
 }
