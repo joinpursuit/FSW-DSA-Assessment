@@ -8,7 +8,7 @@
 // ex: multiply(5, 10) should return 50
 
 function multiply(x, y) {
-
+  return x * y;
 }
 
 // Question 2
@@ -16,6 +16,9 @@ function multiply(x, y) {
 // ex: arraySquare([1,3,5,8]) should return [1,9,25,64]
 
 function arraySquare(arr) {
+    let newArr = arr.map(e => e * e);
+    return newArr;
+  
 
 }
 
@@ -25,9 +28,27 @@ function arraySquare(arr) {
 // ex: integerRange(1, 10) should return 8
 // ex: integerRange(4, 25) should return 19
 
-function integerRange(low, high) {
 
+function integerRange(low, high) {
+  if(low>high) {
+    return 0;
+  }
+  
+  else{ 
+    
+    let counter = 0;
+
+  for(let i = low; i<high; i++ ){
+      if(!i.toString().includes('5')) {
+          counter++
+      }
+  }
+
+  return counter;
 }
+}
+
+
 
 // Question 4
 // Write a function that takes an integer and an unsorted array of numbers
@@ -37,6 +58,14 @@ function integerRange(low, high) {
 // ex: inputSum([1,3,5,4,2], 2) should return false
 
 function inputSum(arr, targetInt) {
+  for(let i = 0; i < arr.length; i++){
+    for(let j = 1; j < arr.length; j++){
+      if(arr[i] + arr[j] === targetInt){
+        return true
+      }
+    }
+  }
+  return false 
 
 }
 
@@ -47,7 +76,12 @@ function inputSum(arr, targetInt) {
 // ex: recursiveSum([1,2,3,4,5]) should return 15
 
 function recursiveSum(input) {
-
+  if (input.length === 1) {
+    return input[0];
+  }
+  else {
+    return input[0] + recursiveSum(input.slice(1));
+  }
 }
 
 // Question 6
@@ -65,6 +99,14 @@ function recursiveSum(input) {
 // }
 
 function traverseLinkedList(inputList) {
+  let container=[], 
+    node = inputList;
+    
+    while(node){
+    container.push(node.value);
+    node = node.next;
+  }
+  return container
 
 }
 
@@ -90,7 +132,10 @@ function traverseLinkedList(inputList) {
 // }
 
 function maxDepth(tree) {
-  
+  if(!tree){
+    return 0;
+  }
+  return Math.max(maxDepth(tree.left), maxDepth(tree.right))+1;
 }
 
 module.exports = {
